@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="{{url('/')}}" class="brand-link">
         <img src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">E-MANAGE</span>
     </a>
 
     <!-- Sidebar -->
@@ -13,7 +13,7 @@
                 <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">{{auth()->user()->name}}</a>
             </div>
         </div>
 
@@ -35,7 +35,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
-                    <a href="{{url('/')}}" class="nav-link active">
+                    <a href="{{url('/')}}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -58,13 +58,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/tables/simple.html" class="nav-link">
+                            <a class="nav-link {{ Request::routeIs('permissions') ? 'active' : '' }}" href="{{route('permission.index')}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Permissions</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/tables/data.html" class="nav-link">
+                            <a class="nav-link {{ Request::routeIs('roles') ? 'active' : '' }}" href="{{route('roles')}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Roles</p>
                             </a>
@@ -96,10 +96,22 @@
                         <p>Documents</p>
                     </a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                        <i class="fas fa-arrow-right nav-icon"></i>
+                        Déconnexion
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
 </aside>
+
+
