@@ -43,34 +43,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a class="nav-link {{ Request::routeIs('personnels') ? 'active' : '' }}" href="{{route('personnels.index')}}">
                         <i class="far fa-user nav-icon"></i>
                         <p>Personnels</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-lock"></i>
-                        <p>
-                            Contrôle d'accès
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
+                    <a class="nav-link {{ Request::routeIs('permission') ? 'active' : '' }}" href="{{route('permission.index')}}">
+                        <i class="fas fa-lock"></i>
+                        <p>Permissions</p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::routeIs('permissions') ? 'active' : '' }}" href="{{route('permission.index')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Permissions</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::routeIs('roles') ? 'active' : '' }}" href="{{route('roles')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Roles</p>
-                            </a>
-                        </li>
-
-                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="" class="nav-link">
@@ -79,13 +61,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a class="nav-link {{ Request::routeIs('departements') ? 'active' : '' }}" href="{{route('departements.index')}}">
                         <i class="fas fa-building nav-icon"></i>
                         <p>Départements</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a class="nav-link {{ Request::routeIs('directions') ? 'active' : '' }}" href="{{route('directions.index')}}">
                         <i class="fas fa-location-arrow nav-icon"></i>
                         <p>Directions</p>
                     </a>

@@ -26,8 +26,11 @@ return new class extends Migration
             $table->string('ville');
             $table->string('pays');
             $table->foreignId("departement_id")->constrained();
+            $table->foreignId("post_id")->constrained();
+            $table->foreignId("vacation_id")->constrained();
             $table->foreignId("direction_id")->constrained();
             $table->foreignId("user_id")->constrained();
+            $table->foreignId("permission_id")->constrained();
             $table->timestamps();
         });
         Schema::enableForeignKeyConstraints();
@@ -41,7 +44,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('employees', function(Blueprint $table){
-            $table->dropForeign(["user_id","departement_id","direction_id"]);
+            $table->dropForeign(["user_id","departement_id","direction_id","permission_id","vacation_id","post_id"]);
         });
 
         Schema::dropIfExists('employees');
